@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Sentiment Analysis</h1>
+        <form method="POST">
+            <input type="text" name="keyword" placeholder="Enter keyword" required>
+            <button type="submit">Analyze</button>
+        </form>
+        <ul>
+            {% for tweet in tweets %}
+            <li>
+                <p>{{ tweet.text }}</p>
+                <p>Sentiment: <strong>{{ tweet.sentiment }}</strong></p>
+                <p><em>{{ tweet.created_at }}</em></p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
